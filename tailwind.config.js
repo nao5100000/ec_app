@@ -6,7 +6,16 @@ module.exports = {
   ],
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'dark-green': '#84fab0',
+        'dark-blue': '#8fd3f4'
+      },
+    },
+    fontFamily: {
+      'body': ['"Roboto"', '"Noto Sans JP"'],
+    },
+
   },
   plugins: [],
 }
