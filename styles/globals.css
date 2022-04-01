@@ -5,6 +5,9 @@
 
 @layer base {
   html {
-    font-family: Roboto, Noto Sans JP;
+    font-family: 'Roboto', 'Noto Sans JP';
+  }
+  input:focus{
+    outline: none;
   }
 }
