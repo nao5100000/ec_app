@@ -12,7 +12,8 @@ module.exports = {
         'gradient-red': '#ff5858',
         'gradient-orange': '#f09819',
         'light-gray': '#cccccc',
-        'dark-gray': '#aaaaaa'
+        'dark-gray': '#aaaaaa',
+        'light-gray02': '#f4f4f4'
       },
       fontFamily: {
         'body': ['"Roboto"', '"Noto Sans JP"'],
