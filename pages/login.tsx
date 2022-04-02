@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Header from '../components/organisms/header';
+import Layout from '../components/templates/layout';
 
 const Login = () => {
     return (
@@ -23,6 +25,13 @@ const Login = () => {
                 </div>
             </div>
         </>
+    )
+}
+Login.getLayout = function getLayout(page: any) {
+    return (
+        <Layout>
+            {page}
+        </Layout>
     )
 }
 
