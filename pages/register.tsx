@@ -1,6 +1,7 @@
 import CommonDt from '../components/atoms/common/commonDt';
 import CommonH2 from '../components/atoms/common/commonH2';
 import SubmitButton from '../components/atoms/common/submitButton';
+import PositionRadioButton from '../components/atoms/login/positionRadioButton';
 import Layout from '../components/templates/layout';
 
 const Register = () => {
@@ -17,8 +18,13 @@ const Register = () => {
                     <input className="w-full border-b border-light-gray pb-1 focus:border-gradient-orange" />
                 </dd>
                 <CommonDt text="Password" />
-                <dd className="mb-[60px]">
+                <dd className="mb-[30px]">
                     <input className="w-full border-b border-light-gray pb-1 focus:border-gradient-orange" />
+                </dd>
+                <CommonDt text="ポジション" />
+                <dd className="flex justify-between align-center mb-[60px]">
+                    <PositionRadioButton text="アイデア提案" value="idea" />
+                    <PositionRadioButton text="エンジニア" value="engineer" />
                 </dd>
             </dl>
             <SubmitButton text="Enter" />
