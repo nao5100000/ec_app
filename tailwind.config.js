@@ -14,6 +14,7 @@ module.exports = {
         'gradient-orange': '#f09819',
         'light-gray': '#cccccc',
         'dark-gray': '#aaaaaa',
+        'dark-gray02': '#4c4c4c',
         'light-gray02': '#f4f4f4',
         'light-gray03': '#f9f9f9'
       },
