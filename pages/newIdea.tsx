@@ -26,6 +26,10 @@ const NewIdea = () => {
                 <dd className="mb-12">
                     <MarkDown />
                 </dd>
+                <CommonDt text="メイン機能" />
+                <dd className="mb-12">
+                    <MarkDown />
+                </dd>
                 <CommonDt text="画像投稿" />
                 <dd className="mb-12">
                     <ImageRegisterButton />

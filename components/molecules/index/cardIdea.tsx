@@ -6,7 +6,7 @@ import CardTime from "../../atoms/index/cardTIme";
 
 const CardIdea = () => {
     return (
-        <div className="bg-white p-8 shadow-md rounded-lg w-[48%] cursor-pointer hover:shadow-sm relative mb-8">
+        <div className="bg-white p-8 shadow-md rounded-lg w-[48%] cursor-pointer hover:shadow-sm relative mb-8 delay-200">
             <CardIdeaTitle idea="タンを思いっきり食べたい。" />
             <CardDifficultyHigh />
             <div className="flex justify-between items-start">
