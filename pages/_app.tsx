@@ -13,7 +13,15 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: any) => page)
-  return (getLayout(<><main className="pt-32 pb-32 bg-light-gray02 min-h-screen"><Component {...pageProps} /></main></>))
+  return (
+    getLayout(
+      <>
+        <main className="pt-32 pb-32 bg-light-gray02 min-h-screen">
+          <Component {...pageProps} />
+        </main>
+      </>
+    )
+  )
   //return <Component {...pageProps} />
 }
 
