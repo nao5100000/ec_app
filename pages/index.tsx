@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
-import SearchField from '../components/organisms/index/searchField';
+import CardIdea from '../components/molecules/index/cardIdea';
 import Layout from '../components/templates/layout';
 
 const Home = () => {
   return (
-    <div>
-      <SearchField />
+    <div className="max-w-6xl w-4/5 mx-auto flex justify-between items-stretch">
+      <CardIdea />
+      <CardIdea />
     </div>
   )
 }
