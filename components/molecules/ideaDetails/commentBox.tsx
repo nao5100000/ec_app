@@ -6,7 +6,7 @@ import CommentTitle from "../../atoms/ideaDetails/comments/commentTitle";
 const CommentBox = () => {
     return (
         <>
-            <div className="max-w-2xl p-10 w-4/5 mx-auto">
+            <div className="max-w-2xl w-4/5 mx-auto">
                 <CommentTitle />
                 <div>
                     <div>

@@ -1,6 +1,7 @@
 import CardDifficultyHigh from '../components/atoms/common/cardDifficultyHigh';
 import CardIdeaUser from '../components/atoms/common/cardIdeaUser';
 import CardTime from '../components/atoms/common/cardTIme';
+import FavoriteButton from '../components/atoms/common/favoriteButton';
 import IdeaDetailsDt from '../components/atoms/ideaDetails/ideaDetailsDt';
 import IdeaDetailsFavorite from '../components/atoms/ideaDetails/ideaDetailsFavorite';
 import IdeaDetailsPreview from '../components/atoms/ideaDetails/ideaDetailsPreview';
@@ -8,11 +9,11 @@ import IdeaDetailsTag from '../components/atoms/ideaDetails/ideaDetailsTag';
 import IdeaDetailsTitle from '../components/atoms/ideaDetails/ideaDetailsTitle';
 import CommentBox from '../components/molecules/ideaDetails/commentBox';
 import Layout from '../components/templates/layout';
-const IdeaDeitals = () => {
+const IdeaDetails = () => {
     return (
         <>
             <IdeaDetailsTitle />
-            <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md">
+            <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md mb-10">
                 <div className="flex justify-start items-center">
                     <CardDifficultyHigh />
                     <IdeaDetailsFavorite favorite={89} />
@@ -37,6 +38,7 @@ const IdeaDeitals = () => {
                         <IdeaDetailsPreview text="つれづれなるまゝに、日暮らし、硯にむかひて、心にうつりゆくよしなし事を、そこはかとなく書きつくれば、あやしうこそものぐるほしけれ。（Wikipediaより）" />
                     </dd>
                 </dl>
+                <FavoriteButton />
                 <div className="flex justify-between items-center">
                     <CardIdeaUser username="花子ありがとう" position="アイデア" />
                     <CardTime time="2022.04.01" />
@@ -46,7 +48,7 @@ const IdeaDeitals = () => {
         </>
     )
 }
-IdeaDeitals.getLayout = function getLayout(page: any) {
+IdeaDetails.getLayout = function getLayout(page: any) {
     return (
         <Layout>
             {page}
@@ -54,4 +56,4 @@ IdeaDeitals.getLayout = function getLayout(page: any) {
     )
 }
 
-export default IdeaDeitals;
+export default IdeaDetails;
