@@ -5,7 +5,7 @@ type Props = {
 const MypageUserText = (props: Props) => {
     return (
         <dd>
-            <p className="text-white mb-5 pb-1.5 border-b">{props.text}</p>
+            <p className="mb-5 pb-1.5 border-b">{props.text}</p>
         </dd>
     )
 }

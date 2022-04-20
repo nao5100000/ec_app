@@ -5,7 +5,7 @@ import UserInfoBlock from "../components/organisms/mypage/userInfoBlock";
 const MyPage = () => {
     return (
         <>
-            <div className="w-[30%] bg-gradient-to-r from-[#09203f] to-[#537895] min-h-screen absolute top-0 flex justify-center items-center  shadow-lg">
+            <div className="w-[30%] bg-gradient-to-t from-[#2a5298] to-[#1e3c72] min-h-screen absolute top-0 flex justify-center items-center  shadow-lg">
                 <UserInfoBlock />
             </div>
         </>
