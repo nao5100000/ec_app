@@ -1,5 +1,5 @@
 import Image from 'next/image'
-
+import { IdeaProperty } from '../../../types/types'
 type Props = {
     username: string
     position: string
