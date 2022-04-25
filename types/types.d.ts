@@ -9,6 +9,6 @@ export interface IdeaProps {
 };
 
 export interface IdeaProperty {
-    idea:IdeaProps;
+    idea: IdeaProps;
 }
 

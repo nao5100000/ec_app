@@ -1,24 +1,46 @@
-import CardDifficultyHigh from '../components/atoms/common/cardDifficultyHigh';
-import CardIdeaUser from '../components/atoms/common/cardIdeaUser';
-import CardTime from '../components/atoms/common/cardTIme';
-import FavoriteButton from '../components/atoms/common/favoriteButton';
-import IdeaDetailsDt from '../components/atoms/ideaDetails/ideaDetailsDt';
-import IdeaDetailsFavorite from '../components/atoms/ideaDetails/ideaDetailsFavorite';
-import IdeaDetailsPreview from '../components/atoms/ideaDetails/ideaDetailsPreview';
-import IdeaDetailsTag from '../components/atoms/ideaDetails/ideaDetailsTag';
-import IdeaDetailsTitle from '../components/atoms/ideaDetails/ideaDetailsTitle';
-import CommentBox from '../components/molecules/ideaDetails/commentBox';
-import Layout from '../components/templates/layout';
+import CardDifficultyHigh from '../../components/atoms/common/cardDifficultyHigh';
+import CardIdeaUser from '../../components/atoms/common/cardIdeaUser';
+import CardTime from '../../components/atoms/common/cardTIme';
+import FavoriteButton from '../../components/atoms/common/favoriteButton';
+import IdeaDetailsDt from '../../components/atoms/ideaDetails/ideaDetailsDt';
+import IdeaDetailsFavorite from '../../components/atoms/ideaDetails/ideaDetailsFavorite';
+import IdeaDetailsPreview from '../../components/atoms/ideaDetails/ideaDetailsPreview';
+import IdeaDetailsTag from '../../components/atoms/ideaDetails/ideaDetailsTag';
+import IdeaDetailsTitle from '../../components/atoms/ideaDetails/ideaDetailsTitle';
+import CommentBox from '../../components/molecules/ideaDetails/commentBox';
+import Layout from '../../components/templates/layout';
+import { useRouter } from 'next/router';
+import { newIdeaState } from '../../components/hooks/recoil/newIdeaState';
+import { useRecoilValue } from 'recoil';
+import { IdeaProperty } from '../../types/types';
+import { useState, useEffect } from 'react';
+
+
 const IdeaDetails = () => {
+    const router = useRouter();
+    const targetId = router.query.id;
+    const ideas = useRecoilValue(newIdeaState);
+
+    console.log(targetId)
+    const [targetIdea, setTargetIdea] = useState({})
+    useEffect(() => {
+        if (!router.isReady) {
+            return
+        }
+        const res = ideas.find(
+            (idea: any) => idea.id === targetId
+        )
+        setTargetIdea(res);
+        console.log(ideas)
+    }, []);
     return (
         <>
-            <IdeaDetailsTitle />
+            {targetIdea && <IdeaDetailsTitle title={targetIdea.title} />}
             <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md mb-10">
                 <div className="flex justify-start items-center">
                     <CardDifficultyHigh />
                     <IdeaDetailsFavorite favorite={89} />
                 </div>
-
                 <ul className="mb-8">
                     <li className="inline-block">
                         <IdeaDetailsTag text="example01" />
