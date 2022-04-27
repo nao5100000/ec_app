@@ -9,6 +9,8 @@ import { TagsInput } from "react-tag-input-component";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
+import { db } from "../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
 
 
 const MDEditor = dynamic(
@@ -18,48 +20,65 @@ const MDEditor = dynamic(
 
 const NewIdea = () => {
     const [selected, setSelected] = useState(['']);
-    const [title, setTitle] = useState('');
-    const [details, setDetails] = useState('');
-    const [goal, setGoal] = useState('');
+    const [newTitle, setNewTitle] = useState('');
+    const [newDetails, setNewDetails] = useState('');
+    const [newGoal, setNewGoal] = useState('');
 
-    const [kinou, setKinou] = useState('')
+    const [kinou, setKinou] = useState('');
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+
+        const ref = collection(db, 'ideas');
+
+        await addDoc(ref, {
+            title: newTitle,
+            details: newDetails,
+            doal: newGoal,
+            function: kinou,
+        })
+    }
     return (
         <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md">
-            <IdeaTitle />
-            <dl>
-                <CommonDt text="アイデアのタイトル" />
-                <dd className="mb-12">
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full border rounded p-4 text-lg shadow-inner h-12" />
-                </dd>
-                <CommonDt text="アイデアの詳細(背景やストーリー)" />
-                <dd className="mb-12">
-                    <MDEditor value={details} onChange={setDetails} />
-                </dd>
-                <CommonDt text="目標とするもの（どうなってほしいか）" />
-                <dd className="mb-12">
-                    <MDEditor value={goal} onChange={setGoal} />
-                </dd>
-                <CommonDt text="メイン機能" />
-                <dd className="mb-12">
-                    <MDEditor value={kinou} onChange={setKinou} />
-                </dd>
-                <CommonDt text="画像投稿" />
-                <dd className="mb-12">
-                    <ImageRegisterButton />
-                </dd>
-                <CommonDt text="関連タグ" />
-                <dd className="mb-12">
-                    <TagsInput
-                        value={selected}
-                        onChange={setSelected}
-                        name="tags"
-                        placeHolder="tags"
-                    />
-                </dd>
-                <CommonDt text="想定される難易度" />
-                <DifficultyRadioWrapper />
-            </dl>
-            <SubmitButton text="投稿してみる" />
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <IdeaTitle />
+                    <dl>
+                        <CommonDt text="アイデアのタイトル" />
+                        <dd className="mb-12">
+                            <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="w-full border rounded p-4 text-lg shadow-inner h-12" />
+                        </dd>
+                        <CommonDt text="アイデアの詳細(背景やストーリー)" />
+                        <dd className="mb-12">
+                            <MDEditor value={newDetails} onChange={setNewDetails} />
+                        </dd>
+                        <CommonDt text="目標とするもの（どうなってほしいか）" />
+                        <dd className="mb-12">
+                            <MDEditor value={newGoal} onChange={setNewGoal} />
+                        </dd>
+                        <CommonDt text="メイン機能" />
+                        <dd className="mb-12">
+                            <MDEditor value={kinou} onChange={setKinou} />
+                        </dd>
+                        <CommonDt text="画像投稿" />
+                        <dd className="mb-12">
+                            <ImageRegisterButton />
+                        </dd>
+                        <CommonDt text="関連タグ" />
+                        <dd className="mb-12">
+                            <TagsInput
+                                value={selected}
+                                onChange={setSelected}
+                                name="tags"
+                                placeHolder="tags"
+                            />
+                        </dd>
+                        <CommonDt text="想定される難易度" />
+                        <DifficultyRadioWrapper />
+                    </dl>
+                </label>
+                <SubmitButton text="投稿してみる" />
+            </form>
         </div>
     )
 }

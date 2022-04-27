@@ -21,21 +21,17 @@ const IdeaDetails = () => {
     const targetId = router.query.id;
     const ideas = useRecoilValue(newIdeaState);
 
-    console.log(targetId)
     const [targetIdea, setTargetIdea] = useState({})
     useEffect(() => {
-        if (!router.isReady) {
-            return
-        }
         const res = ideas.find(
             (idea: any) => idea.id === targetId
         )
         setTargetIdea(res);
-        console.log(ideas)
+        // console.log(res.title);
     }, []);
     return (
         <>
-            {targetIdea && <IdeaDetailsTitle title={targetIdea.title} />}
+            {/* <IdeaDetailsTitle title={targetIdea.title} /> */}
             <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md mb-10">
                 <div className="flex justify-start items-center">
                     <CardDifficultyHigh />
