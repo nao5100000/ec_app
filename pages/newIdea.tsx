@@ -23,7 +23,6 @@ const NewIdea = () => {
     const [newTitle, setNewTitle] = useState('');
     const [newDetails, setNewDetails] = useState('');
     const [newGoal, setNewGoal] = useState('');
-
     const [kinou, setKinou] = useState('');
 
     const handleSubmit = async (e: any) => {
