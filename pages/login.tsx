@@ -1,21 +1,21 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import CommonDt from '../components/atoms/common/commonDt';
 import CommonH2 from '../components/atoms/common/commonH2';
 import SubmitButton from '../components/atoms/common/submitButton';
-import Header from '../components/organisms/header';
 import Layout from '../components/templates/layout';
 import { useState } from 'react';
-import { useSignup } from '../components/hooks/useSignup';
+import { useLogin } from '../components/hooks/useLogin';
 
 const Login = () => {
-    const [usename, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { error, signup } = useSignup();
+    const { error, login } = useLogin();
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-
+        login(email, password)
     }
+
     return (
         <>
             <div className="flex items-center">
@@ -25,7 +25,7 @@ const Login = () => {
                         <dl>
                             <CommonDt text="E-mail" />
                             <dd className="mb-[30px]">
-                                <input className="w-full border-b border-light-gray pb-1 focus:border-gradient-orange" value={usename} onChange={(e) => setUsername(e.target.value)} />
+                                <input className="w-full border-b border-light-gray pb-1 focus:border-gradient-orange" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </dd>
                             <CommonDt text="Password" />
                             <dd className="mb-[40px]">

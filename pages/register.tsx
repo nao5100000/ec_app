@@ -5,6 +5,8 @@ import PositionRadioButton from '../components/atoms/login/positionRadioButton';
 import Layout from '../components/templates/layout';
 import { useState } from 'react';
 import { useSignup } from '../components/hooks/useSignup';
+import { db } from "../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -12,9 +14,17 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
     const { error, signup } = useSignup();
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        signup(email, password)
+        signup(email, password, username)
+
+        // const ref = collection(db, 'user');
+
+        // await addDoc(ref, {
+        //     name: username,
+        //     email: email,
+        //     password: password,
+        // })
     }
     return (
         <div className="min-w-[400px] w-1/4 bg-white p-10 drop-shadow-md mx-auto rounded-md">

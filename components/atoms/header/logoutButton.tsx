@@ -1,4 +1,6 @@
+import { useLogout } from "../../hooks/useLogout";
 const LogoutButton = () => {
-    return <button className="color-dark-gray underline">ログアウト</button>
+    const { logout } = useLogout();
+    return <button className="color-dark-gray underline text-sm" onClick={() => logout()}>ログアウト</button>
 }
 export default LogoutButton;

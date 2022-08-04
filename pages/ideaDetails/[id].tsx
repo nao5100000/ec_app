@@ -9,29 +9,24 @@ import IdeaDetailsTag from '../../components/atoms/ideaDetails/ideaDetailsTag';
 import IdeaDetailsTitle from '../../components/atoms/ideaDetails/ideaDetailsTitle';
 import CommentBox from '../../components/molecules/ideaDetails/commentBox';
 import Layout from '../../components/templates/layout';
+import { collection, onSnapshot, getDoc, doc, } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import { newIdeaState } from '../../components/hooks/recoil/newIdeaState';
+import { newIdeaState } from '../../components/lib/recoil/newIdeaState';
 import { useRecoilValue } from 'recoil';
-import { IdeaProperty } from '../../types/types';
 import { useState, useEffect } from 'react';
-
+import { db } from '../../firebase/config';
+import { Firestore } from 'firebase/firestore';
+import { NextApiRequest, NextApiResponse } from 'next'
+import { useDocument } from '../../components/hooks/useDocument';
 
 const IdeaDetails = () => {
     const router = useRouter();
-    const targetId = router.query.id;
-    const ideas = useRecoilValue(newIdeaState);
-
-    const [targetIdea, setTargetIdea] = useState({})
-    useEffect(() => {
-        const res = ideas.find(
-            (idea: any) => idea.id === targetId
-        )
-        setTargetIdea(res);
-        // console.log(res.title);
-    }, []);
+    const id: any = router.query.id;
+    const { result, isPending, error } = useDocument('ideas', id);
+    console.log(result);
     return (
         <>
-            {/* <IdeaDetailsTitle title={targetIdea.title} /> */}
+            <IdeaDetailsTitle title={result.title} />
             <div className="bg-white max-w-2xl p-10 w-4/5 mx-auto shadow-md rounded-md mb-10">
                 <div className="flex justify-start items-center">
                     <CardDifficultyHigh />

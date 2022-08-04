@@ -21,9 +21,10 @@ const MDEditor = dynamic(
 const NewIdea = () => {
     const [selected, setSelected] = useState(['']);
     const [newTitle, setNewTitle] = useState('');
-    const [newDetails, setNewDetails] = useState('');
-    const [newGoal, setNewGoal] = useState('');
-    const [kinou, setKinou] = useState('');
+    const [newDetails, setNewDetails] = useState<string | undefined>('');
+    const [newGoal, setNewGoal] = useState<string | undefined>('');
+    const [kinou, setKinou] = useState<string | undefined>('');
+
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
