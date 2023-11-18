@@ -8,7 +8,7 @@ export const useAuthentication = () => {
   const [user, setUser] = useRecoilState(userState)
   useEffect(() => {
     if (user !== null) {
-      return
+      return;
     }
     onAuthStateChanged(auth, function (firebaseUser) {
       if (firebaseUser) {
@@ -18,10 +18,9 @@ export const useAuthentication = () => {
         })
       } else {
         // User is signed out.
-        setUser(null)
+        setUser(null);
       }
     })
-  }, [user])
-
+  }, [user]);
   return { user }
 }

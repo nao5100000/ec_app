@@ -23,20 +23,20 @@ export const useDocument = (c: any, id: any) => {
         docRef,
         (doc: any) => {
           result.push({ ...doc.data(), id: doc.id })
-
           setError(null);
           setIsPending(false);
+          console.log(result);
+          return result;
         },
         (err) => {
           setError("failed to get document");
           setIsPending(false);
-          console.log(result);
         }
       );
       return () => unsub();
     };
     fetchData();
-    console.log(result);
   }, [c, id, query]);
+  console.log(result);
   return { result, isPending, error };
 };

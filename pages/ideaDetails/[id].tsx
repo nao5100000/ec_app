@@ -23,7 +23,8 @@ const IdeaDetails = () => {
     const router = useRouter();
     const id: any = router.query.id;
     const { result, isPending, error } = useDocument('ideas', id);
-    console.log(result);
+
+    console.log(result)
     return (
         <>
             <IdeaDetailsTitle title={result.title} />

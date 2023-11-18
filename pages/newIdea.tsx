@@ -11,7 +11,7 @@ import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
 import { db } from "../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
-
+// import { timeStamp } from "console";
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor"),
@@ -30,8 +30,8 @@ const NewIdea = () => {
         e.preventDefault();
 
         const ref = collection(db, 'ideas');
-
         await addDoc(ref, {
+            id: timeStamp,
             title: newTitle,
             details: newDetails,
             doal: newGoal,
