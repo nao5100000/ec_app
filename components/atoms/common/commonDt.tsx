@@ -1,5 +1,5 @@
 type Props = {
-    text: string
+    text: string | undefined
 }
 
 const CommonDt = (props: Props) => {

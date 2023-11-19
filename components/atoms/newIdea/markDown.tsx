@@ -7,10 +7,15 @@ const MDEditor = dynamic(
     { ssr: false }
 );
 
-const MarkDown = () => {
+type Props = {
+    text: string;
+    setText: any;
+}
+
+const MarkDown = ({ text }: Props) => {
     return (
         <>
-            <MDEditor />
+            <MDEditor value={text} />
         </>
     );
 }
