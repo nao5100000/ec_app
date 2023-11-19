@@ -9,28 +9,31 @@ const Search = () => {
     const [keyword, setKeyword] = useState<string | undefined>();
     const ref = collection(db, 'ideas');
 
-    let ideas: any = [];
+    // let ideas: any = [];
+    const [ideas,setIdeas] = useState(['']);
     useEffect(() => {
         // getDocs(query(ref, where("title", "in", keyword))).then(snapshot => {
         //     snapshot.forEach(doc => {
         //         // console.log(`${doc.id}: ${doc.data().userName}`);
+                    // ideas.push(doc.data());
         //         console.log(doc)
         //     });
         // })
         if (!keyword) {
             return;
         }
-        const query2 = query(ref, where("title", "==", [keyword]));
+        const query2 = query(ref, where("title", "==", keyword));
 
         console.log(keyword);
         console.log(query2);
         getDocs(query2).then((querySnapshot) => {
             //console.log("querySnapshot:", querySnapshot);
+            console.log(querySnapshot)
             querySnapshot.forEach((doc) => {
                 console.log(doc.data());
                 ideas.push(doc.data());
-                console.log(ideas);
             });
+            console.log(ideas);
         });
     }, [keyword])
     return (
